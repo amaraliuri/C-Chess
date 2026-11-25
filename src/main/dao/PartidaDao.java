@@ -1,7 +1,5 @@
 package main.dao;
 
-import br.com.ifpr.cchess.model.Partida;
-import br.com.ifpr.cchess.util.ConexaoMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,12 +8,14 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import main.model.Partida;
+import main.util.ConexaoMySQL;
 
 public class PartidaDao implements RepositoryDao<Partida> {
 
     @Override
     public void salvar(Partida p) {
-        String sql = "INSERT INTO partida (usuario_id, turno_atual, status, resultado, data_hora) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Chess_partida (usuario_id, turno_atual, status, resultado, data_hora) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -38,7 +38,7 @@ public class PartidaDao implements RepositoryDao<Partida> {
 
     @Override
     public void atualizar(Partida p) {
-        String sql = "UPDATE partida SET turno_atual = ?, status = ?, resultado = ?, data_hora = ? WHERE id = ?";
+        String sql = "UPDATE Chess_partida SET turno_atual = ?, status = ?, resultado = ?, data_hora = ? WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -55,7 +55,7 @@ public class PartidaDao implements RepositoryDao<Partida> {
 
     @Override
     public Partida buscarPorId(int id) {
-        String sql = "SELECT id, turno_atual, status, resultado, data_hora FROM partida WHERE id = ?";
+        String sql = "SELECT id, turno_atual, status, resultado, data_hora FROM Chess_partida WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -72,7 +72,7 @@ public class PartidaDao implements RepositoryDao<Partida> {
     }
 
     public List<Partida> listarPorUsuario(int usuarioId) {
-        String sql = "SELECT id, turno_atual, status, resultado, data_hora FROM partida WHERE usuario_id = ? ORDER BY data_hora DESC";
+        String sql = "SELECT id, turno_atual, status, resultado, data_hora FROM Chess_partida WHERE usuario_id = ? ORDER BY data_hora DESC";
         List<Partida> partidas = new ArrayList<>();
 
         try (Connection conn = ConexaoMySQL.conectar();

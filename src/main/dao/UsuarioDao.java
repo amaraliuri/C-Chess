@@ -1,18 +1,18 @@
 package main.dao;
 
-import br.com.ifpr.cchess.model.Usuario;
-import br.com.ifpr.cchess.util.ConexaoMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import main.model.Usuario;
+import main.util.ConexaoMySQL;
 
 public class UsuarioDao implements RepositoryDao<Usuario> {
 
     @Override
     public void salvar(Usuario u) {
-        String sql = "INSERT INTO usuario (nome, login, senha) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Chess_usuario (nome, login, senha) VALUES (?, ?, ?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -33,7 +33,7 @@ public class UsuarioDao implements RepositoryDao<Usuario> {
 
     @Override
     public void atualizar(Usuario u) {
-        String sql = "UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ?";
+        String sql = "UPDATE Chess_usuario SET nome = ?, login = ?, senha = ? WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -49,7 +49,7 @@ public class UsuarioDao implements RepositoryDao<Usuario> {
 
     @Override
     public Usuario buscarPorId(int id) {
-        String sql = "SELECT id, nome, login, senha FROM usuario WHERE id = ?";
+        String sql = "SELECT id, nome, login, senha FROM Chess_usuario WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -66,7 +66,7 @@ public class UsuarioDao implements RepositoryDao<Usuario> {
     }
 
     public Usuario buscarPorLogin(String login) {
-        String sql = "SELECT id, nome, login, senha FROM usuario WHERE login = ?";
+        String sql = "SELECT id, nome, login, senha FROM Chess_usuario WHERE login = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 

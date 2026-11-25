@@ -1,8 +1,8 @@
 package main.view;
 
-import br.com.ifpr.cchess.dao.PartidaDao;
-import br.com.ifpr.cchess.model.Partida;
-import br.com.ifpr.cchess.model.Usuario;
+import main.dao.PartidaDao;
+import main.model.Partida;
+import main.model.Usuario;
 import java.awt.BorderLayout;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

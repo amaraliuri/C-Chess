@@ -1,6 +1,6 @@
 package main;
 
-import br.com.ifpr.cchess.view.InterfaceLogin;
+import main.view.InterfaceLogin;
 import javax.swing.SwingUtilities;
 
 public class Main {

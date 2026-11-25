@@ -1,10 +1,10 @@
 package main.view;
 
-import br.com.ifpr.cchess.model.ChessApiBot;
-import br.com.ifpr.cchess.model.Jogador;
-import br.com.ifpr.cchess.model.JogadorHumano;
-import br.com.ifpr.cchess.model.Partida;
-import br.com.ifpr.cchess.model.Usuario;
+import main.model.ChessApiBot;
+import main.model.Jogador;
+import main.model.JogadorHumano;
+import main.model.Partida;
+import main.model.Usuario;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;

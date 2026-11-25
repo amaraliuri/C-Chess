@@ -1,17 +1,17 @@
 package main.dao;
 
-import br.com.ifpr.cchess.model.Acessibilidade;
-import br.com.ifpr.cchess.util.ConexaoMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import main.model.Acessibilidade;
+import main.util.ConexaoMySQL;
 
 public class AcessibilidadeDao implements RepositoryDao<Acessibilidade> {
 
     @Override
     public void salvar(Acessibilidade a) {
-        String sql = "INSERT INTO acessibilidade (id, contraste, tamanho_pecas) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Chess_acessibilidade (id, contraste, tamanho_pecas) VALUES (?, ?, ?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -26,7 +26,7 @@ public class AcessibilidadeDao implements RepositoryDao<Acessibilidade> {
 
     @Override
     public void atualizar(Acessibilidade a) {
-        String sql = "UPDATE acessibilidade SET contraste = ?, tamanho_pecas = ? WHERE id = ?";
+        String sql = "UPDATE Chess_acessibilidade SET contraste = ?, tamanho_pecas = ? WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -41,7 +41,7 @@ public class AcessibilidadeDao implements RepositoryDao<Acessibilidade> {
 
     @Override
     public Acessibilidade buscarPorId(int id) {
-        String sql = "SELECT id, contraste, tamanho_pecas FROM acessibilidade WHERE id = ?";
+        String sql = "SELECT id, contraste, tamanho_pecas FROM Chess_acessibilidade WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 

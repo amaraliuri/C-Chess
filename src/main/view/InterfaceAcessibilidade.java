@@ -1,8 +1,8 @@
 package main.view;
 
-import br.com.ifpr.cchess.dao.AcessibilidadeDao;
-import br.com.ifpr.cchess.model.Acessibilidade;
-import br.com.ifpr.cchess.model.Usuario;
+import main.dao.AcessibilidadeDao;
+import main.model.Acessibilidade;
+import main.model.Usuario;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
